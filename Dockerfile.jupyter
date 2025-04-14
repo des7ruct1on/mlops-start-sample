@@ -1,0 +1,21 @@
+# Используем базовый образ Jupyter
+FROM jupyter/datascience-notebook:notebook-6.5.4
+
+# Устанавливаем OpenJDK 17
+USER root
+RUN apt-get update && apt-get install -y openjdk-17-jdk --quiet
+
+# Настроим переменную окружения JAVA_HOME
+RUN echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> /etc/environment \
+    && echo "PATH=\$JAVA_HOME/bin:\$PATH" >> /etc/environment
+
+# Выводим JAVA_HOME для проверки
+RUN echo "JAVA_HOME is set to: $JAVA_HOME" >> /var/log/jupyter.log
+
+# Устанавливаем дополнительные зависимости
+RUN pip install pyspark==3.4.1 --quiet
+RUN pip install mlflow==2.15.1 --quiet
+RUN pip install boto3 --quiet
+
+# Запускаем Jupyter Notebook
+CMD start-notebook.sh --NotebookApp.token=''

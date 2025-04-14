@@ -1,0 +1,1 @@
+{"numeric_cols": ["JoiningYear", "PaymentTier", "Age", "ExperienceInCurrentDomain", "LeaveOrNot"], "categorial_cols": ["Education", "City", "Gender", "EverBenched"], "target_col": "LeaveOrNot"}

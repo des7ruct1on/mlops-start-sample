@@ -1,0 +1,20 @@
+# Секреты
+.env
+*.secret
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Данные и логи
+jupyter-data/
+logs/
+dags/catboost_info/
+
+# IDE
+.vscode/
+.idea/
